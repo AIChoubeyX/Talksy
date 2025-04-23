@@ -28,7 +28,7 @@
 //   }
 
 //   return (
-  
+
 //       <div>
 //         <Navbar />
 //         <Routes>
@@ -40,13 +40,13 @@
 //         </Routes>
 //         <Toaster />
 //       </div>
-    
+
 //   );
 // };
 
 // export default App;
 import React, { useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
@@ -57,36 +57,36 @@ import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/useAuthStore";
 
 const App = () => {
-  const { authUser, checkAuth } = useAuthStore();
+    const { authUser, checkAuth } = useAuthStore();
 
-  useEffect(() => {
-    checkAuth(); // Checks user authentication status when app loads
-  }, []);
+    useEffect(() => {
+        checkAuth(); // Checks user authentication status when app loads
+    }, []);
 
-  return (
-    <div>
-      <Navbar />
+    return (
+        <BrowserRouter>
+            <Navbar />
 
-      {/* <Routes>
-        {/* Home Page - protected route */}
-        <Route path="/" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
+            <Routes>
+                {/* Home Page - protected route */}
+                <Route path="/" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
 
-        {/* Sign Up Page - only for unauthenticated users */}
-        <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/" />} />
+                {/* Sign Up Page - only for unauthenticated users */}
+                <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/" />} />
 
-        {/* Login Page - only for unauthenticated users */}
-        <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/" />} />
+                {/* Login Page - only for unauthenticated users */}
+                <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/" />} />
 
-        {/* Settings Page - always accessible */}
-        <Route path="/settings" element={<SettingsPage />} />
+                {/* Settings Page - always accessible */}
+                <Route path="/settings" element={<SettingsPage />} />
 
-        {/* Profile Page - protected route */}
-        <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to="/login" />} />
-      </Routes> */}
+                {/* Profile Page - protected route */}
+                <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to="/login" />} />
+            </Routes>
 
-      <Toaster />
-    </div>
-  );
+            <Toaster />
+        </BrowserRouter>
+    );
 };
 
-export defau
+export default App;
