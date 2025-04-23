@@ -11,7 +11,7 @@ import { connectDB } from './lib/db.js';
 const app = express();
 app.use(cookieParser())
 app.use(cors({
-  origin: 'http://localhost:5172',
+  origin: 'http://localhost:5173',
   credentials: true,
 }));
 
@@ -19,7 +19,6 @@ app.use(express.json());
 app.use("/api/auth" , authRoutes);
 app.use("/api/message" , messageRoutes)
 const PORT = process.env.PORT
-// app.use(express.json());  
 
 app.listen(5001, () => {
   console.log('Server is running on port 5001');
