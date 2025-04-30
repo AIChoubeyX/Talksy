@@ -20,6 +20,10 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' })); // or higher if needed
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+
+
+
+
 app.use("/api/auth" , authRoutes);
 app.use("/api/messages" , messageRoutes)
 const PORT = process.env.PORT
