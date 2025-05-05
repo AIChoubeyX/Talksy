@@ -1,7 +1,7 @@
  import axios from "axios";
 
  export const axiosInstance = axios.create({
-     baseURL: import.meta.env.MODE === "development" ? "http://localhost:5001/api" :"/api",
+     baseURL: import.meta.env.MODE === "development" ? "http://localhost:5001/api" :"/talksy-3au1.vercel.app",
      withCredentials: true,
      timeout: 5000, // Add a timeout
      headers: {
